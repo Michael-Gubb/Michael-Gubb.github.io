@@ -9,6 +9,9 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./vite-project
 
     steps:
       - name: Checkout repo
@@ -17,8 +20,8 @@ jobs:
       - name: Use Node.js 18
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-          cache: 'npm'
+          node-version: 18.x
+          cache: "npm"
       - run: npm ci
       - run: npm run build --if-present
 
